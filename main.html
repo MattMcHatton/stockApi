@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <title>Dialexa Stock Market</title>
+</head>
+<body>
+    <div class="input-container">
+    <form id="form" method="POST">
+        <input id="ticker" type="text" name="ticker" placeholder="Stock Ticker" required>
+        <input id="shares" type="number" name="shares" placeholder="# of Shares" required>
+        <input id="buy-button" class="buy-button" type="button" value="Buy">
+        <input id="sell-button" class="sell-button" type="button" value="Sell">
+        <input id="clear-button" class="clear-button" type="button" name="clear" value="Clear">
+    </form>
+    </div>
+    <div class="action-feed-container" >
+        <form type="text" id="action-feed">
+            This is where the action is at
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        const form = document.getElementById("form");
+        const ticker = document.getElementById("ticker");
+        const shares = document.getElementById("shares");
+        const buy_button = document.getElementById("buy-button")
+        const sell_button = document.getElementById("sell-button")
+        const clear_button = document.getElementById("clear-button")
+        const action_feed = document.getElementById("action-feed")
+
+
+
+        buy_button.addEventListener('click', (e) => {
+            let time = new Date(Date.now());
+            let formattedTime = time.getUTCDate();
+            let text = `\n ${formattedTime} | Buy | ${ticker.value} | ${shares.value} shares`
+            
+            //send the text to the server
+            socket.emit('stock action', text);
+            ticker.value = '';
+            shares.value = '';
+        })
+
+        sell_button.addEventListener('click', (e) => {
+            let time = new Date(Date.now());
+            let formattedTime = time.getUTCDate();
+            let text = `\n ${formattedTime} | Sell | ${ticker.value} | ${shares.value} shares`
+
+            //send the text to the server
+            socket.emit('stock action', text);
+
+            ticker.value = '';
+            shares.value = '';
+        })
+
+        clear_button.addEventListener('click', (e) => {
+            ticker.value = '';
+            shares.value = '';
+            action_feed.innerText = "This is where the action is at"
+        })
+
+        //when it gets the call from the 'stock action' event type, add text to screen
+        socket.on('stock action', (msg) => {
+            action_feed.innerText += msg
+        });
+        
+
+    </script>
+
+</body>
+
+</html>

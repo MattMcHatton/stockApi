@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <title>Dialexa Stock Market</title>
+</head>
+<body>
+    <div class="input-container">
+    <form id="form" method="POST">
+        <input id="username" type="text" name="username" placeholder="Username" required>
+        <input id="password" type="text" name="password" placeholder="Password" required>
+        <input id="Login" class="login-button" type="button" value="Login" onclick="login()">
+        <input id="register" class="register-button" type="button" value="Register" onclick="goToRegister()">
+    </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        function goToRegister(){
+            location.assign("/register")
+        }
+        function login(){
+            location.assign("/main")
+        }
+    </script>
+</body>
+
+</html>

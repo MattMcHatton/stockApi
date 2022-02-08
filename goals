@@ -1,0 +1,24 @@
+Dialexa Trading Competition Application
+=======================================
+- Add actions to feed on screen
+    - Complete
+
+- View live holdings of stocks on screen
+    - Number of shares
+    - Amounts
+
+- Track user sessions
+
+- Incorprate DB to hold user and hodling information
+
+- Add new tab for crypto transactions with same functionality
+- View all holdings crypto and stocks
+
+
+Features
+========
+
+- Able to see everyones trading activity live (sockets)
+- Able to see everyones performance pseudo-live (depending on the stock API capabilities)
+- Able to see the performance of Market (S&P, NASDAQ, DOW, RUSSEL)
+- Able to see specific stock/crypto price information

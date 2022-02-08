@@ -1,0 +1,21 @@
+{
+  "name": "socket-example",
+  "version": "0.0.1",
+  "description": "my first socket.io app",
+  "dependencies": {
+    "@alpacahq/alpaca-trade-api": "^2.12.1",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^3.2.0",
+    "socket.io": "^4.4.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
